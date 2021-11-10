@@ -1,3 +1,5 @@
 //Ignore these files
 config/config.env
 node_modules
+.DS_Store
+/*.envgit
