@@ -80,7 +80,7 @@ exports.getVendingMachinesByCoordinates = async (req,res,next) =>   {
         }else{
             querySnapshot.forEach(item =>{
                 if(item.data().locationDetails.singleLocation){
-                    //console.log("vtttt ",item.data().locationDetails.singleLocation.hashLoc)
+        
                     var hashLoc = item.data().locationDetails.singleLocation.hashLoc //calculate hash for the location
                     const unit = new vendingUnit(
                         item.id,
