@@ -57,11 +57,15 @@ exports.getVendingMachinesByCoordinates = async (req,res,next) =>   {
         const lon = 0.0181818181818182; // longitude degrees per mile
          var lowerlat=0,lowerlon=0,upperlat=0,upperlon = 0
         
-            lowerlat = 37.42199837230146 - (lat * requiredDistance)
-            lowerlon  = -122.08400001749396 - (lon * requiredDistance)
+         console.log("lan",currentLatitude);
+         console.log("long",currentLongitude);
+         console.log("dis",requiredDistance);
 
-            upperlat = 37.42199837230146 + (lat * requiredDistance)
-            upperlon = -122.08400001749396 + (lon * requiredDistance)
+            lowerlat = currentLatitude - (lat * requiredDistance)
+            lowerlon  = currentLongitude - (lon * requiredDistance)
+
+            upperlat = currentLatitude + (lat * requiredDistance)
+            upperlon = currentLongitude + (lon * requiredDistance)
 
         const lower = geohash.encode(parseFloat(lowerlat),parseFloat(lowerlon))
         const higher = geohash.encode(parseFloat(upperlat),parseFloat(upperlon))
@@ -76,7 +80,7 @@ exports.getVendingMachinesByCoordinates = async (req,res,next) =>   {
         }else{
             querySnapshot.forEach(item =>{
                 if(item.data().locationDetails.singleLocation){
-                    console.log("vtttt ",item.data().locationDetails.singleLocation.hashLoc)
+                    //console.log("vtttt ",item.data().locationDetails.singleLocation.hashLoc)
                     var hashLoc = item.data().locationDetails.singleLocation.hashLoc //calculate hash for the location
                     const unit = new vendingUnit(
                         item.id,
