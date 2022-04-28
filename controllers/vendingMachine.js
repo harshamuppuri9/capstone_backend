@@ -41,6 +41,7 @@ exports.getVendingMachines = async (req,res,next) =>   {
 //@route GET /api/vendingMachines/coordinates/:lat/:lon
 exports.getVendingMachinesByCoordinates = async (req,res,next) =>   {
     try{
+        console.log("Header",req.headers);
         const vendingUnitsArray=[];
         var currentLatitude = req.params.lat
         var currentLongitude = req.params.lon

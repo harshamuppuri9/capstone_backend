@@ -1,5 +1,7 @@
 const express = require('express');
+const { check } = require('express-validator');
 const router = express.Router();
+//const (fieldValidator,v) = require("express-validator")
 const {getVendingMachine,getVendingMachines,
     createVendingMachines,updateVendingMachines,
     deleteVendingMachine,
